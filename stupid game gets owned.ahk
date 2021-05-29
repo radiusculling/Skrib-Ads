@@ -1,81 +1,48 @@
-SetBatchLines, 100
 #NoEnv
-#SingleInstance, Force
-DetectHiddenWindows, On
-SetTitleMatchMode, 2
-
+#MaxHotkeysPerInterval 99000000
+#HotkeyInterval 99000000
+#KeyHistory 0		
+ListLines Off
+Process, Priority, %PID%, High
+SetBatchLines, -1
+SetKeyDelay, -1, -1
+SetMouseDelay, -1
+SetDefaultMouseSpeed, 0
+SetWinDelay, -1
+SetControlDelay, -1
+SendMode Input
 q::
 start: 
-ControlFocus,, skrib 1
-ControlSend,, {f5}, skrib 1
-ControlFocus,, skrib 2
-ControlSend,, {f5}, skrib 2
-ControlFocus,, skrib 3
-ControlSend,, {f5}, skrib 3
-ControlFocus,, skrib 4
-ControlSend,, {f5}, skrib 4
-ControlFocus,, skrib 5
-ControlSend,, {f5}, skrib 5
-sleep, 5000
 loop, 4
 {
-	ControlFocus,, skrib 1
-	ControlSend,, {tab}, skrib 1
-	ControlFocus,, skrib 2
-	ControlSend,, {tab}, skrib 2
-	ControlFocus,, skrib 3
-	ControlSend,, {tab}, skrib 3
-	ControlFocus,, skrib 4
-	ControlSend,, {tab}, skrib 4
-	ControlFocus,, skrib 5
-	ControlSend,, {tab}, skrib 5
+sendinput, {tab}
 }
-
-ControlFocus,, skrib 1
-ControlSend,, {enter}, skrib 1
-ControlFocus,, skrib 2
-ControlSend,, {enter}, skrib 2
-ControlFocus,, skrib 3
-ControlSend,, {enter}, skrib 3
-ControlFocus,, skrib 4
-ControlSend,, {enter}, skrib 4
-ControlFocus,, skrib 5
-ControlSend,, {enter}, skrib 5
-
-Sleep, 10000
-loop, 2
+sendinput, {enter} 
+loop 
 {
-	ControlFocus,, skrib 1
-	ControlSend,, {tab}, skrib 1
-	ControlFocus,, skrib 2
-	ControlSend,, {tab}, skrib 2
-	ControlFocus,, skrib 3
-	ControlSend,, {tab}, skrib 3
-	ControlFocus,, skrib 4
-	ControlSend,, {tab}, skrib 4
-	ControlFocus,, skrib 5
-	ControlSend,, {tab}, skrib 5		
+searchtext:
+PixelSearch, Px, Py, 452, 185, 452, 185, 0x877E84, 1, Fast
+If ErrorLevel
+	goto, searchtext
+Else goto, sendtext
 }
-
+sendtext:
+Click, 1310 716
 loop, 3
 {
-	ControlFocus,, skrib 1
-	ControlSend,, ^v, skrib 1 
-	ControlSend,, {enter}, skrib 1
-	ControlFocus,, skrib 2
-	ControlSend,, ^v, skrib 2 
-	ControlSend,, {enter}, skrib 2
-	ControlFocus,, skrib 3
-	ControlSend,, ^v, skrib 3 
-	ControlSend,, {enter}, skrib 3
-	ControlFocus,, skrib 4
-	ControlSend,, ^v skrib 4
-	ControlSend,, {enter}, skrib 4
-	ControlFocus,, skrib 5
-	ControlSend,, ^v, skrib 5
-	ControlSend,, {enter}, skrib 5
-} 
-
-Sleep, 1000 
-
-goto, start 
+sendinput, youtube(dot)com/watch?v=ybSEyo8F_uI
+sendinput, {enter} 
+}
+Sleep, 100
+sendinput, ^l
+sendinput, skribbl.io
+sendinput, {enter}
+loop 
+{
+searchstart:
+PixelSearch, Px, Py, 984, 196, 984, 196, 0xF21628, 1, Fast
+If ErrorLevel
+	goto, searchstart
+Else goto, start
+}
+return
