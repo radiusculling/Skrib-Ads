@@ -54,7 +54,7 @@ sendinput, I've joined %var% lobbies!
 sendinput, {enter} 
 loop, 3
 {
-sendinput, youtube(dot)com/watch?v=ybSEyo8F_uI
+sendinput, youtube(dot)com/watch?v=ybSEyo8F_uI ; Change this to whatever text you want spammed
 sendinput, {enter} 
 }
 sleep, 1000
