@@ -1,2 +1,1 @@
-#Skrib Ads
 This script is jankcoded because that's how I roll. It specifically works for 1920x1080 resolution monitors. If you have at least a few braincells you can change the numbers yourself to fit your monitor size.
